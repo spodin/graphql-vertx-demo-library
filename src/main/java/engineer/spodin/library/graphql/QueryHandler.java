@@ -5,6 +5,8 @@ import engineer.spodin.library.graphql.web.QueryResponse;
 import engineer.spodin.library.http.RouterAwareHandler;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
+import io.netty.handler.codec.http.HttpResponseStatus;
+import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.Json;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
@@ -35,8 +37,8 @@ public class QueryHandler implements RouterAwareHandler {
                 query.query(), new Object(), query.variables());
 
         ctx.response()
-           .setStatusCode(200)
-           .putHeader("content-type", "application/json; charset=utf-8")
+           .setStatusCode(HttpResponseStatus.OK.code())
+           .putHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8")
            .end(Json.encode(new QueryResponse(result.getData(), result.getErrors())));
     }
 }

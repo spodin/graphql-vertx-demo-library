@@ -1,6 +1,8 @@
 package engineer.spodin.library.http;
 
+import io.netty.handler.codec.http.HttpResponseStatus;
 import io.vertx.core.Handler;
+import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 
@@ -12,8 +14,8 @@ class FailuresHandler implements Handler<RoutingContext> {
                 .put("message", failedCtx.failure().getMessage());
 
         failedCtx.response()
-                 .setStatusCode(400)
-                 .putHeader("content-type", "application/json; charset=utf-8")
+                 .setStatusCode(HttpResponseStatus.BAD_REQUEST.code())
+                 .putHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8")
                  .end(body.encode());
     }
 }
