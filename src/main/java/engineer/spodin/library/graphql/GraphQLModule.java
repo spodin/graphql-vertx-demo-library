@@ -25,8 +25,7 @@ public class GraphQLModule extends AbstractModule {
     @Override
     protected void configure() {
         Multibinder<GraphQLResolver<?>> resolversBinder =
-                Multibinder.newSetBinder(binder(), new TypeLiteral<GraphQLResolver<?>>() {
-                });
+                Multibinder.newSetBinder(binder(), new TypeLiteral<GraphQLResolver<?>>() { });
 
         resolversBinder.addBinding().to(BookResolver.class);
         resolversBinder.addBinding().to(Query.class);
