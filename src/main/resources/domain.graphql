@@ -1,0 +1,12 @@
+# Core domain types
+
+type Book {
+    id: Int!
+    name: String!
+    author: Author!
+}
+
+type Author {
+    id: Int!
+    name: String!
+}

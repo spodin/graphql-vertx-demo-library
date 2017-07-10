@@ -1,0 +1,15 @@
+.gradle
+build
+.idea
+*.iml
+*.ipr
+*.iws
+out/
+db/
+file-uploads/
+.vertx/
+bin/
+.settings/
+.classpath
+.project
+src/main/generated/
