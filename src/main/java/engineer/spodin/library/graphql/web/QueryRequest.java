@@ -7,7 +7,7 @@ import java.util.Map;
 import static java.util.Collections.emptyMap;
 
 /**
- * Unmodifiable GraphQL query request representation.
+ * Immutable GraphQL query request representation.
  */
 public final class QueryRequest {
     private final String query;

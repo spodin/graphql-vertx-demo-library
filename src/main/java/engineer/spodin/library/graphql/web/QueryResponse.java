@@ -5,7 +5,7 @@ import graphql.GraphQLError;
 import java.util.*;
 
 /**
- * Unmodifiable GraphQL execution result representation
+ * Immutable GraphQL execution result representation
  * ready to be sent over wire.
  */
 public final class QueryResponse implements Map<String, Object> {
