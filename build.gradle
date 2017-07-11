@@ -46,6 +46,6 @@ run {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.0'
+    gradleVersion = '4.0.1'
     distributionType = Wrapper.DistributionType.ALL
 }
