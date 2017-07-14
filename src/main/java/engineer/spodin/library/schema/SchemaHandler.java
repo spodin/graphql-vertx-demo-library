@@ -34,7 +34,7 @@ public class SchemaHandler implements RouterAwareHandler {
     @Override
     public void handle(final RoutingContext ctx) {
         ExecutionResult result = graphQL.execute(
-                Queries.INTROSPECTION, new Object(), emptyMap());
+                Queries.FULL_INTROSPECTION, new Object(), emptyMap());
 
         ctx.response()
            .setStatusCode(HttpResponseStatus.OK.code())

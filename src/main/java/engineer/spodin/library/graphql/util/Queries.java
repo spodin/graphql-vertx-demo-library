@@ -11,7 +11,7 @@ public final class Queries {
      * <a href="http://graphql.org/learn/introspection">Introspection</a>
      * query for full schema declaration.
      */
-    public static final String INTROSPECTION =
+    public static final String FULL_INTROSPECTION =
             "{\n" +
                     "    __schema {\n" +
                     "      queryType { name }\n" +
