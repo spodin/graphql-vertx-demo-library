@@ -8,6 +8,7 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.LoggerFormat;
 import io.vertx.ext.web.handler.LoggerHandler;
+import io.vertx.ext.web.handler.ResponseTimeHandler;
 
 import javax.inject.Inject;
 import java.util.Set;
@@ -29,6 +30,7 @@ public class HttpServer extends AbstractVerticle {
         Router router = Router.router(vertx);
         router.route().handler(LoggerHandler.create(true, LoggerFormat.DEFAULT));
         router.route().handler(BodyHandler.create());
+        router.route().handler(ResponseTimeHandler.create());
         router.route().failureHandler(new FailuresHandler());
 
         handlers.forEach(handler -> handler.registerOn(router));
