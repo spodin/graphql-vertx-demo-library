@@ -2,8 +2,8 @@ package engineer.spodin.library.http;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
-import engineer.spodin.library.graphql.QueryHandler;
-import engineer.spodin.library.graphql.SchemaHandler;
+import engineer.spodin.library.query.QueryHandler;
+import engineer.spodin.library.schema.SchemaHandler;
 
 public class HttpModule extends AbstractModule {
 

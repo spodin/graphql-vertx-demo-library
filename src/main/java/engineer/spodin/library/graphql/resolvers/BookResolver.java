@@ -1,9 +1,9 @@
 package engineer.spodin.library.graphql.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
-import engineer.spodin.library.persistence.author.Author;
-import engineer.spodin.library.persistence.author.AuthorRepository;
-import engineer.spodin.library.persistence.book.Book;
+import engineer.spodin.library.domain.author.Author;
+import engineer.spodin.library.domain.author.AuthorRepository;
+import engineer.spodin.library.domain.book.Book;
 
 import javax.inject.Inject;
 

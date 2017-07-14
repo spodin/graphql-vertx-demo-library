@@ -1,4 +1,4 @@
-package engineer.spodin.library.persistence.book;
+package engineer.spodin.library.domain.book;
 
 public class Book {
     private Long id;

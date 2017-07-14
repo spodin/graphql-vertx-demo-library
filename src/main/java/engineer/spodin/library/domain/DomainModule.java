@@ -1,14 +1,14 @@
-package engineer.spodin.library.persistence;
+package engineer.spodin.library.domain;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
-import engineer.spodin.library.persistence.author.AuthorRepository;
-import engineer.spodin.library.persistence.author.AuthorRepositoryImpl;
-import engineer.spodin.library.persistence.book.BookRepository;
-import engineer.spodin.library.persistence.book.BookRepositoryImpl;
+import engineer.spodin.library.domain.author.AuthorRepository;
+import engineer.spodin.library.domain.author.AuthorRepositoryImpl;
+import engineer.spodin.library.domain.book.BookRepository;
+import engineer.spodin.library.domain.book.BookRepositoryImpl;
 
-public class PersistenceModule extends AbstractModule {
+public class DomainModule extends AbstractModule {
 
     @Provides @Singleton
     public AuthorRepository authorRepository() {

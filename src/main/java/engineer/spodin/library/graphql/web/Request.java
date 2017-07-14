@@ -9,11 +9,11 @@ import static java.util.Collections.emptyMap;
 /**
  * Immutable GraphQL query request representation.
  */
-public final class QueryRequest {
+public final class Request {
     private final String query;
     private final Map<String, Object> variables;
 
-    private QueryRequest(String query, Map<String, Object> variables) {
+    private Request(String query, Map<String, Object> variables) {
         this.query = query;
         this.variables = variables;
     }
@@ -24,8 +24,8 @@ public final class QueryRequest {
      * @param json json body object
      * @return parsed request query instance
      */
-    public static QueryRequest fromJson(JsonObject json) {
-        return new QueryRequest(
+    public static Request fromJson(JsonObject json) {
+        return new Request(
                 json.getString("query"),
                 parseMap(json.getJsonObject("variables"))
         );
@@ -56,7 +56,7 @@ public final class QueryRequest {
 
     @Override
     public String toString() {
-        return "QueryRequest{" +
+        return "Request{" +
                 "query='" + query + '\'' +
                 ", variables=" + variables +
                 '}';

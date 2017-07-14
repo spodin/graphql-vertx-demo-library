@@ -1,7 +1,7 @@
-package engineer.spodin.library.graphql;
+package engineer.spodin.library.query;
 
-import engineer.spodin.library.graphql.web.QueryRequest;
-import engineer.spodin.library.graphql.web.QueryResponse;
+import engineer.spodin.library.graphql.web.Request;
+import engineer.spodin.library.graphql.web.Response;
 import engineer.spodin.library.http.RouterAwareHandler;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
@@ -31,7 +31,7 @@ public class QueryHandler implements RouterAwareHandler {
 
     @Override
     public void handle(final RoutingContext ctx) {
-        QueryRequest query = QueryRequest.fromJson(ctx.getBodyAsJson());
+        Request query = Request.fromJson(ctx.getBodyAsJson());
 
         ExecutionResult result = graphQL.execute(
                 query.query(), new Object(), query.variables());
@@ -39,6 +39,6 @@ public class QueryHandler implements RouterAwareHandler {
         ctx.response()
            .setStatusCode(HttpResponseStatus.OK.code())
            .putHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8")
-           .end(Json.encode(new QueryResponse(result.getData(), result.getErrors())));
+           .end(Json.encode(new Response(result.getData(), result.getErrors())));
     }
 }

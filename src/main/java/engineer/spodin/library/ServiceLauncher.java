@@ -4,7 +4,7 @@ import com.google.inject.AbstractModule;
 import engineer.spodin.library.http.HttpModule;
 import engineer.spodin.library.http.HttpServer;
 import engineer.spodin.library.graphql.GraphQLModule;
-import engineer.spodin.library.persistence.PersistenceModule;
+import engineer.spodin.library.domain.DomainModule;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
@@ -47,7 +47,7 @@ public class ServiceLauncher extends AbstractVerticle {
         protected void configure() {
             install(new HttpModule());
             install(new GraphQLModule());
-            install(new PersistenceModule());
+            install(new DomainModule());
         }
     }
 }
