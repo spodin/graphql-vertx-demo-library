@@ -40,8 +40,7 @@ shadowJar {
     }
 }
 
-run {
-    main = mainClassName
+runShadow {
     args = ['run', mainVerticle]
 }
 
