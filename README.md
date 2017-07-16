@@ -4,9 +4,13 @@ Some experiments with wiring up [Vert.x](http://vertx.io), [Guice](https://githu
 
 **Work in progress**, but all code on `master` branch is stable and can be easily compiled and run using `./gradlew run` execution.
 
-### Demo Request
+## Discovering the GraphQL API
 
-Send `POST` to `/graphql` with JSON body:
+### Queries Execution
+
+Send `POST` to `/graphql` with JSON body.
+
+Example:
 
 ```json
 {
@@ -14,3 +18,8 @@ Send `POST` to `/graphql` with JSON body:
 	"variables":{}
 }
 ```
+
+### Introspection
+
+Execute your [introspection](http://graphql.org/learn/introspection) query (as described above), 
+or get full schema declaration via `GET` request to `/graphql`.
