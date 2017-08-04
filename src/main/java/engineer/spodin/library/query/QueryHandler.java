@@ -9,6 +9,9 @@ import graphql.GraphQL;
 import graphql.GraphQLException;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonObject;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 
@@ -21,6 +24,8 @@ import static io.netty.handler.codec.http.HttpResponseStatus.OK;
  * Handles all GraphQL query requests.
  */
 public class QueryHandler implements RouterAwareHandler {
+    private static final Logger log = LoggerFactory.getLogger(QueryHandler.class);
+
     private final GraphQL graphQL;
 
     @Inject
@@ -35,7 +40,12 @@ public class QueryHandler implements RouterAwareHandler {
 
     @Override
     public void handle(final RoutingContext ctx) {
+        final JsonObject payload = ctx.getBodyAsJson();
+        log.info("Request raw payload: " + payload);
+
         final Request query = Request.fromJson(ctx.getBodyAsJson());
+        log.info("Parsed GraphQL query from payload: " + query);
+
         try {
             ExecutionResult result = graphQL.execute(query.query(), new Object(), query.variables());
             ctx.response()
