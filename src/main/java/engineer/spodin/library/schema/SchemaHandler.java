@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import static java.util.Collections.emptyMap;
 
 /**
- * Handles requests for full GraphQL declaration.
+ * Handles requests for full GraphQL schema declaration.
  */
 public class SchemaHandler implements RouterAwareHandler {
     private final GraphQL graphQL;
