@@ -41,7 +41,7 @@ shadowJar {
 }
 
 runShadow {
-    args = ['run', mainVerticle]
+    args = ['run', mainVerticle, '-conf src/main/resources/conf.json']
 }
 
 task wrapper(type: Wrapper) {
