@@ -41,10 +41,10 @@ shadowJar {
 }
 
 runShadow {
-    args = ['run', mainVerticle]
+    args = ['run', mainVerticle, '-conf src/main/resources/conf.json']
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.0.1'
+    gradleVersion = '4.0.2'
     distributionType = Wrapper.DistributionType.ALL
 }
