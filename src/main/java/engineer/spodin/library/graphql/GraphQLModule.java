@@ -18,8 +18,8 @@ import java.util.Set;
 public class GraphQLModule extends AbstractModule {
 
     private static final String[] SCHEMA_FILES = {
-            "root.graphql",
-            "domain.graphql"
+            "graphql/root.graphql",
+            "graphql/domain.graphql"
     };
 
     @Override
