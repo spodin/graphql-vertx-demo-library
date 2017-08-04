@@ -16,7 +16,7 @@ import java.util.Set;
 public class HttpServer extends AbstractVerticle {
     private static final Logger log = LoggerFactory.getLogger(HttpServer.class);
 
-    private static final int PORT = 8080;
+    private static final int DEFAULT_PORT = 8080;
 
     private final Set<RouterAwareHandler> handlers;
 
@@ -37,9 +37,9 @@ public class HttpServer extends AbstractVerticle {
 
         vertx.createHttpServer()
              .requestHandler(router::accept)
-             .listen(PORT, start -> {
+             .listen(DEFAULT_PORT, start -> {
                  if (start.succeeded()) {
-                     log.info("HTTP server running on port " + PORT);
+                     log.info("HTTP server running on port " + DEFAULT_PORT);
                      serverStartup.complete();
                  } else {
                      serverStartup.fail(start.cause());
