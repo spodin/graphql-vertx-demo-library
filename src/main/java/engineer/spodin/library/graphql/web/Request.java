@@ -11,10 +11,12 @@ import static java.util.Collections.emptyMap;
  */
 public final class Request {
     private final String query;
+    private final String operationName;
     private final Map<String, Object> variables;
 
-    private Request(String query, Map<String, Object> variables) {
+    private Request(String query, String operationName, Map<String, Object> variables) {
         this.query = query;
+        this.operationName = operationName;
         this.variables = variables;
     }
 
@@ -27,6 +29,7 @@ public final class Request {
     public static Request fromJson(JsonObject json) {
         return new Request(
                 json.getString("query"),
+                json.getString("operationName"),
                 parseMap(json.getJsonObject("variables"))
         );
     }
@@ -45,6 +48,15 @@ public final class Request {
     }
 
     /**
+     * Returns query operation name.
+     *
+     * @return operation name
+     */
+    public String operationName() {
+        return operationName;
+    }
+
+    /**
      * Returns specified query variables as unmodifiable
      * map instance.
      *
@@ -58,6 +70,7 @@ public final class Request {
     public String toString() {
         return "Request{" +
                 "query='" + query + '\'' +
+                ", operationName='" + operationName + '\'' +
                 ", variables=" + variables +
                 '}';
     }
