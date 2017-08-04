@@ -1,6 +1,7 @@
 package engineer.spodin.library;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.name.Names;
 import engineer.spodin.library.http.HttpModule;
 import engineer.spodin.library.http.HttpServer;
 import engineer.spodin.library.graphql.GraphQLModule;
@@ -8,6 +9,8 @@ import engineer.spodin.library.domain.DomainModule;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
+import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
 
 public class ServiceLauncher extends AbstractVerticle {
 
@@ -48,6 +51,11 @@ public class ServiceLauncher extends AbstractVerticle {
             install(new HttpModule());
             install(new GraphQLModule());
             install(new DomainModule());
+
+            // bind Vert.x configuration
+            bind(JsonObject.class)
+                    .annotatedWith(Names.named("config"))
+                    .toInstance(Vertx.currentContext().config());
         }
     }
 }
