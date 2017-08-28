@@ -52,6 +52,6 @@ runShadow {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.0.2'
+    gradleVersion = '4.1'
     distributionType = Wrapper.DistributionType.ALL
 }
