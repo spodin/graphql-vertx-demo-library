@@ -2,6 +2,7 @@ package engineer.spodin.library.schema;
 
 import engineer.spodin.library.graphql.util.Queries;
 import engineer.spodin.library.graphql.web.Response;
+import engineer.spodin.library.http.MediaType;
 import engineer.spodin.library.http.RouterAwareHandler;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
@@ -38,7 +39,7 @@ public class SchemaHandler implements RouterAwareHandler {
 
         ctx.response()
            .setStatusCode(HttpResponseStatus.OK.code())
-           .putHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8")
+           .putHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8)
            .end(Json.encode(new Response(result.getData(), result.getErrors())));
     }
 }

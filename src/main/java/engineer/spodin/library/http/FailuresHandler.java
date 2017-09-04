@@ -17,7 +17,7 @@ class FailuresHandler implements Handler<RoutingContext> {
 
         ctx.response()
            .setStatusCode(failure.getCode())
-           .putHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8")
+           .putHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8)
            .end(responseBody(failure).encode());
     }
 

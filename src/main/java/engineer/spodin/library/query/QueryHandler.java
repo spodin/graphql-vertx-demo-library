@@ -3,6 +3,7 @@ package engineer.spodin.library.query;
 import engineer.spodin.library.graphql.web.Request;
 import engineer.spodin.library.graphql.web.Response;
 import engineer.spodin.library.http.Failure;
+import engineer.spodin.library.http.MediaType;
 import engineer.spodin.library.http.RouterAwareHandler;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
@@ -17,7 +18,6 @@ import io.vertx.ext.web.RoutingContext;
 
 import javax.inject.Inject;
 
-import static io.netty.handler.codec.http.HttpResponseStatus.BAD_REQUEST;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 
 /**
@@ -50,7 +50,7 @@ public class QueryHandler implements RouterAwareHandler {
             ExecutionResult result = graphQL.execute(query.query(), new Object(), query.variables());
             ctx.response()
                .setStatusCode(OK.code())
-               .putHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8")
+               .putHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8)
                .end(Json.encode(new Response(result.getData(), result.getErrors())));
 
         } catch (GraphQLException e) {
