@@ -54,7 +54,7 @@ public class QueryHandler implements RouterAwareHandler {
                .end(Json.encode(new Response(result.getData(), result.getErrors())));
 
         } catch (GraphQLException e) {
-            ctx.fail(new Failure(BAD_REQUEST.code(), e));
+            ctx.fail(Failure.BAD_REQUEST.causedBy(e));
         }
     }
 }
