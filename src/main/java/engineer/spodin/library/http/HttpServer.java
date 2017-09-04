@@ -13,6 +13,9 @@ import io.vertx.ext.web.handler.ResponseTimeHandler;
 import javax.inject.Inject;
 import java.util.Set;
 
+/**
+ * Serves and routes all HTTP-requests to corresponding handlers.
+ */
 public class HttpServer extends AbstractVerticle {
     private static final Logger log = LoggerFactory.getLogger(HttpServer.class);
 
