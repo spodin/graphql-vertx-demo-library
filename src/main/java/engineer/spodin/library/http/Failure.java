@@ -73,6 +73,21 @@ public final class Failure extends RuntimeException {
     }
 
     /**
+     * Add cause to this failure.
+     *
+     * <p>This method invocation doesn't modify original failure, but
+     * returns new instance instead.
+     *
+     * <p>Usage example: Failure.BAD_REQUEST.causedBy(t)
+     *
+     * @param cause failure cause
+     * @return failure instance
+     */
+    public Failure causedBy(Throwable cause) {
+        return new Failure(getCode(), getMessage(), cause);
+    }
+
+    /**
      * Create instance using specified cause.
      *
      * <p>If specified {@link Throwable} is instance of {@link Failure}
