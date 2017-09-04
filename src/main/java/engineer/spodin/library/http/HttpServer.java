@@ -35,12 +35,11 @@ public class HttpServer extends AbstractVerticle {
 
         handlers.forEach(handler -> handler.registerOn(router));
 
-        final Integer port = config().getInteger("server.port", DEFAULT_PORT);
         vertx.createHttpServer()
              .requestHandler(router::accept)
-             .listen(DEFAULT_PORT, start -> {
+             .listen(config().getInteger("server.port", DEFAULT_PORT), start -> {
                  if (start.succeeded()) {
-                     log.info("HTTP server running on port " + port);
+                     log.info("HTTP server running on port " + start.result().actualPort());
                      serverStartup.complete();
                  } else {
                      serverStartup.fail(start.cause());
