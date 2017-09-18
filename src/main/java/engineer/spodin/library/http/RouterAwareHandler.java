@@ -6,6 +6,8 @@ import io.vertx.ext.web.RoutingContext;
 
 /**
  * Self-registering handler interface.
+ *
+ * <p>May be implemented by handlers that are injection candidates.
  */
 public interface RouterAwareHandler extends Handler<RoutingContext> {
 

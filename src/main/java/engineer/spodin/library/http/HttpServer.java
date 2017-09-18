@@ -13,6 +13,9 @@ import io.vertx.ext.web.handler.ResponseTimeHandler;
 import javax.inject.Inject;
 import java.util.Set;
 
+/**
+ * Serves and routes all HTTP-requests to corresponding handlers.
+ */
 public class HttpServer extends AbstractVerticle {
     private static final Logger log = LoggerFactory.getLogger(HttpServer.class);
 
@@ -35,12 +38,11 @@ public class HttpServer extends AbstractVerticle {
 
         handlers.forEach(handler -> handler.registerOn(router));
 
-        final Integer port = config().getInteger("server.port", DEFAULT_PORT);
         vertx.createHttpServer()
              .requestHandler(router::accept)
-             .listen(DEFAULT_PORT, start -> {
+             .listen(config().getInteger("server.port", DEFAULT_PORT), start -> {
                  if (start.succeeded()) {
-                     log.info("HTTP server running on port " + port);
+                     log.info("HTTP server running on port " + start.result().actualPort());
                      serverStartup.complete();
                  } else {
                      serverStartup.fail(start.cause());
