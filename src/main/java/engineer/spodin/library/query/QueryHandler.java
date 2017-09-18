@@ -17,7 +17,6 @@ import io.vertx.ext.web.RoutingContext;
 
 import javax.inject.Inject;
 
-import static io.netty.handler.codec.http.HttpResponseStatus.BAD_REQUEST;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 
 /**
@@ -54,7 +53,7 @@ public class QueryHandler implements RouterAwareHandler {
                .end(Json.encode(new Response(result.getData(), result.getErrors())));
 
         } catch (GraphQLException e) {
-            ctx.fail(new Failure(BAD_REQUEST.code(), e));
+            ctx.fail(Failure.BAD_REQUEST.causedBy(e));
         }
     }
 }
