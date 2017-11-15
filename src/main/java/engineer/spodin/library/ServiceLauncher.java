@@ -2,7 +2,8 @@ package engineer.spodin.library;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import engineer.spodin.library.domain.DomainModule;
+import engineer.spodin.library.author.AuthorModule;
+import engineer.spodin.library.book.BookModule;
 import engineer.spodin.library.graphql.GraphQLModule;
 import engineer.spodin.library.http.HttpServer;
 import io.vertx.core.AbstractVerticle;
@@ -48,7 +49,8 @@ public class ServiceLauncher extends AbstractVerticle {
         @Override
         protected void configure() {
             install(new GraphQLModule());
-            install(new DomainModule());
+            install(new AuthorModule());
+            install(new BookModule());
 
             // bind Vert.x configuration
             bind(JsonObject.class)

@@ -1,4 +1,4 @@
-package engineer.spodin.library.domain.author;
+package engineer.spodin.library.author;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
