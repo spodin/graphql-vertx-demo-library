@@ -42,7 +42,7 @@ public class HttpServer extends AbstractVerticle {
              .requestHandler(router::accept)
              .listen(config().getInteger("server.port", DEFAULT_PORT), start -> {
                  if (start.succeeded()) {
-                     log.info("HTTP server running on port " + start.result().actualPort());
+                     log.info("Running on port " + start.result().actualPort());
                      serverStartup.complete();
                  } else {
                      serverStartup.fail(start.cause());
