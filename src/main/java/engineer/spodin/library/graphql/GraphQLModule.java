@@ -7,8 +7,9 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
-import engineer.spodin.library.graphql.resolvers.BookResolver;
-import engineer.spodin.library.graphql.resolvers.Query;
+import engineer.spodin.library.book.BookResolver;
+import engineer.spodin.library.graphql.web.GraphQLHandler;
+import engineer.spodin.library.http.RouterAwareHandler;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 
@@ -24,11 +25,18 @@ public class GraphQLModule extends AbstractModule {
 
     @Override
     protected void configure() {
+        // Bind resolvers
         Multibinder<GraphQLResolver<?>> resolversBinder =
                 Multibinder.newSetBinder(binder(), new TypeLiteral<GraphQLResolver<?>>() { });
 
         resolversBinder.addBinding().to(BookResolver.class);
         resolversBinder.addBinding().to(Query.class);
+
+        // Bind handler
+        Multibinder<RouterAwareHandler> handlersBinder =
+                Multibinder.newSetBinder(binder(), RouterAwareHandler.class);
+
+        handlersBinder.addBinding().to(GraphQLHandler.class);
     }
 
     @Provides @Singleton

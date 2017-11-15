@@ -1,4 +1,4 @@
-package engineer.spodin.library.domain.book;
+package engineer.spodin.library.book;
 
 public class Book {
     private Long id;
