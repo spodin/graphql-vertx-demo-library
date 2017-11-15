@@ -2,10 +2,9 @@ package engineer.spodin.library;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import engineer.spodin.library.http.HttpModule;
-import engineer.spodin.library.http.HttpServer;
-import engineer.spodin.library.graphql.GraphQLModule;
 import engineer.spodin.library.domain.DomainModule;
+import engineer.spodin.library.graphql.GraphQLModule;
+import engineer.spodin.library.http.HttpServer;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
@@ -48,7 +47,6 @@ public class ServiceLauncher extends AbstractVerticle {
     public static class BootstrapBinder extends AbstractModule {
         @Override
         protected void configure() {
-            install(new HttpModule());
             install(new GraphQLModule());
             install(new DomainModule());
 

@@ -8,10 +8,10 @@ import java.util.*;
  * Immutable GraphQL execution result representation
  * ready to be sent over wire.
  */
-public final class Response implements Map<String, Object> {
+final class Response implements Map<String, Object> {
     private final Map<String, Object> result;
 
-    public Response(Object data, List<GraphQLError> errors) {
+    Response(Object data, List<GraphQLError> errors) {
         Map<String, Object> result = new LinkedHashMap<>();
         if (!errors.isEmpty()) {
             result.put("errors", errors);
