@@ -1,4 +1,4 @@
-package engineer.spodin.library.query;
+package engineer.spodin.library.graphql;
 
 import engineer.spodin.library.graphql.web.Request;
 import engineer.spodin.library.graphql.web.Response;
