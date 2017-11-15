@@ -11,5 +11,7 @@
         <Root level="DEBUG">
             <AppenderRef ref="Console"/>
         </Root>
+        <Logger name="io.netty" level="WARN"/>
+        <Logger name="io.vertx" level="INFO"/>
     </Loggers>
 </Configuration>
