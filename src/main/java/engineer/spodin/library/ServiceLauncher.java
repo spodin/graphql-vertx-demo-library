@@ -11,20 +11,26 @@ import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 
 public class ServiceLauncher extends AbstractVerticle {
+    private static final Logger log = LoggerFactory.getLogger(ServiceLauncher.class);
 
     @Override
     public void start(final Future<Void> startup) throws Exception {
-        config().put("guice_binder", BootstrapBinder.class.getName());
+        log.info("Starting up...");
 
+        config().put("guice_binder", BootstrapBinder.class.getName());
         DeploymentOptions opts = new DeploymentOptions().setConfig(config());
 
         deploy(HttpServer.class, opts).setHandler(
                 deployment -> {
                     if (deployment.succeeded()) {
+                        log.info("Started");
                         startup.complete();
                     } else {
+                        log.error(deployment.cause());
                         startup.fail(deployment.cause());
                     }
                 }
@@ -36,6 +42,7 @@ public class ServiceLauncher extends AbstractVerticle {
         vertx.deployVerticle(
                 "java-guice:" + verticle.getName(), opts, ar -> {
                     if (ar.succeeded()) {
+                        log.info(verticle.getSimpleName() + " deployed successfully");
                         deployment.succeeded();
                     } else {
                         deployment.fail(ar.cause());
