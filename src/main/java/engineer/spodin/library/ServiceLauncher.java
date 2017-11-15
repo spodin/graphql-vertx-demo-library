@@ -43,7 +43,7 @@ public class ServiceLauncher extends AbstractVerticle {
                 "java-guice:" + verticle.getName(), opts, ar -> {
                     if (ar.succeeded()) {
                         log.info(verticle.getSimpleName() + " deployed successfully");
-                        deployment.succeeded();
+                        deployment.complete();
                     } else {
                         deployment.fail(ar.cause());
                     }
