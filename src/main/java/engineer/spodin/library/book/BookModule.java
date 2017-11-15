@@ -20,6 +20,6 @@ public class BookModule extends AbstractModule {
     @Provides
     @Singleton
     public BookRepository bookRepository() {
-        return new BookRepositoryImpl();
+        return new InMemoryBookRepository();
     }
 }

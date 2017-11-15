@@ -9,7 +9,7 @@ public class AuthorModule extends AbstractModule {
     @Provides
     @Singleton
     public AuthorRepository authorRepository() {
-        return new AuthorRepositoryImpl();
+        return new InMemoryAuthorRepository();
     }
 
     @Override
