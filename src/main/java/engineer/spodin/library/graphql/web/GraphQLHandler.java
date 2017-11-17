@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import static engineer.spodin.library.http.MediaType.APPLICATION_JSON_UTF8;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.vertx.core.http.HttpHeaders.CONTENT_TYPE;
-import static java.util.Collections.emptyMap;
 
 /**
  * Handles all GraphQL requests.
