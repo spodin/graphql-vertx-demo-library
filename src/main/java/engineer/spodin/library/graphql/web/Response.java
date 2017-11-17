@@ -9,79 +9,79 @@ import java.util.*;
  * ready to be sent over wire.
  */
 final class Response implements Map<String, Object> {
-    private final Map<String, Object> data;
+    private final Map<String, Object> body;
 
     Response(Object data, List<GraphQLError> errors) {
         Map<String, Object> result = new LinkedHashMap<>();
+        result.put("data", data);
         if (!errors.isEmpty()) {
             result.put("errors", errors);
         }
-        result.put("data", data);
-        this.data = Collections.unmodifiableMap(result);
+        this.body = Collections.unmodifiableMap(result);
     }
 
     @Override
     public int size() {
-        return data.size();
+        return body.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return data.isEmpty();
+        return body.isEmpty();
     }
 
     @Override
     public boolean containsKey(Object key) {
-        return data.containsKey(key);
+        return body.containsKey(key);
     }
 
     @Override
     public boolean containsValue(Object value) {
-        return data.containsKey(value);
+        return body.containsKey(value);
     }
 
     @Override
     public Object get(Object key) {
-        return data.get(key);
+        return body.get(key);
     }
 
     @Override
     public Object put(String key, Object value) {
-        return data.put(key, value);
+        return body.put(key, value);
     }
 
     @Override
     public Object remove(Object key) {
-        return data.remove(key);
+        return body.remove(key);
     }
 
     @Override
     public void putAll(Map<? extends String, ?> m) {
-        data.putAll(m);
+        body.putAll(m);
     }
 
     @Override
     public void clear() {
-        data.clear();
+        body.clear();
     }
 
     @Override
     public Set<String> keySet() {
-        return data.keySet();
+        return body.keySet();
     }
 
     @Override
     public Collection<Object> values() {
-        return data.values();
+        return body.values();
     }
 
     @Override
     public Set<Entry<String, Object>> entrySet() {
-        return data.entrySet();
+        return body.entrySet();
     }
 
     @Override
     public String toString() {
-        return "Response{" + data.toString() + '}';
+        return "Response{" + body.toString() + '}';
     }
 }
