@@ -4,12 +4,10 @@ package engineer.spodin.library.graphql.util;
  * Holds some common GraphQL queries.
  */
 public final class Queries {
-
     private Queries() { }
 
     /**
-     * <a href="http://graphql.org/learn/introspection">Introspection</a>
-     * query for full schema declaration.
+     * <a href="http://graphql.org/learn/introspection">Introspection</a> query for full schema declaration.
      */
     public static final String FULL_INTROSPECTION =
             "{\n" +

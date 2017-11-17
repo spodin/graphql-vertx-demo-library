@@ -5,8 +5,7 @@ import graphql.GraphQLError;
 import java.util.*;
 
 /**
- * Immutable GraphQL execution result representation
- * ready to be sent over wire.
+ * Immutable GraphQL execution result representation ready to be sent over wire.
  */
 final class Response implements Map<String, Object> {
     private final Map<String, Object> body;

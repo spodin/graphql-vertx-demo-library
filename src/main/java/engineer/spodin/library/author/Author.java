@@ -4,8 +4,7 @@ public class Author {
     private Long id;
     private String name;
 
-    public Author() {
-    }
+    public Author() { }
 
     public Author(Long id, String name) {
         this.id = id;
@@ -30,9 +29,6 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Author{id=" + id + ", name='" + name + '\'' + '}';
     }
 }

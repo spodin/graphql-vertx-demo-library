@@ -23,8 +23,8 @@ class FailuresHandler implements Handler<RoutingContext> {
 
     /**
      * Maps {@link Failure} to response body.
-     *
-     * <p>Must return <b>non</b> {@code null} {@link JsonObject}.
+     * <p>
+     * Must return <b>non</b> {@code null} {@link JsonObject}.
      *
      * @param failure failure instance
      * @return response body

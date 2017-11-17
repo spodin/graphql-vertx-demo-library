@@ -32,7 +32,7 @@ public class GraphQLModule extends AbstractModule {
         resolversBinder.addBinding().to(BookResolver.class);
         resolversBinder.addBinding().to(Query.class);
 
-        // Bind handler
+        // Bind handlers
         Multibinder<RouterAwareHandler> handlersBinder =
                 Multibinder.newSetBinder(binder(), RouterAwareHandler.class);
 

@@ -17,8 +17,7 @@ public class BookModule extends AbstractModule {
         resolversBinder.addBinding().to(BookResolver.class);
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public BookRepository bookRepository() {
         return new InMemoryBookRepository();
     }

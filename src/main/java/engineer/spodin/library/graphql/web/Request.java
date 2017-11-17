@@ -57,8 +57,7 @@ final class Request {
     }
 
     /**
-     * Returns specified query variables as unmodifiable
-     * map instance.
+     * Returns specified query variables as unmodifiable map instance.
      *
      * @return variables map
      */

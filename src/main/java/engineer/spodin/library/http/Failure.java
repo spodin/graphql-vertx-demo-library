@@ -2,16 +2,18 @@ package engineer.spodin.library.http;
 
 /**
  * Immutable exception that represents occurred failure, optionally enriched with code.
- *
- * <p>Implemented to handle failures in a generic way.
- *
- * <p>By default failure instance holds {@code 500} as code,
+ * <p>
+ * Implemented to handle failures in a generic way.
+ * <p>
+ * By default failure instance holds {@code 500} as code,
  * that maps to <a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a>
  * HTTP status.
  */
 public final class Failure extends RuntimeException {
 
-    // Client Errors (4xx)
+    /*
+     * Client Errors (4xx)
+     */
     public static final Failure BAD_REQUEST = new Failure(400, "BAD REQUEST");
     public static final Failure UNAUTHORIZED = new Failure(401, "UNAUTHORIZED");
     public static final Failure FORBIDDEN = new Failure(403, "FORBIDDEN");
@@ -22,7 +24,9 @@ public final class Failure extends RuntimeException {
     public static final Failure UNPROCESSABLE_ENTITY = new Failure(422, "UNPROCESSABLE ENTITY");
     public static final Failure TOO_MANY_REQUESTS = new Failure(429, "TOO MANY REQUESTS");
 
-    // Server Errors (5xx)
+    /*
+     * Server Errors (5xx)
+     */
     public static final Failure INTERNAL_SERVER_ERROR = new Failure(500, "INTERNAL SERVER ERROR");
     public static final Failure NOT_IMPLEMENTED = new Failure(501, "NOT IMPLEMENTED");
     public static final Failure BAD_GATEWAY = new Failure(502, "BAD GATEWAY");
@@ -64,9 +68,8 @@ public final class Failure extends RuntimeException {
     }
 
     /**
-     * Returns {@link Failure} by specified code.
-     * If there is cached instance for specified code - it will be returned, otherwise
-     * a new will be created.
+     * Returns {@link Failure} by specified code. If there is cached instance for specified code - it will be returned,
+     * otherwise a new will be created.
      *
      * @param code failure code
      * @return failure instance
@@ -103,9 +106,8 @@ public final class Failure extends RuntimeException {
 
     /**
      * Add cause to this failure.
-     *
-     * <p>This method invocation doesn't modify original failure, but
-     * returns new instance instead.
+     * <p>
+     * This method invocation doesn't modify original failure, but returns new instance instead.
      *
      * <p>Usage example: Failure.BAD_REQUEST.causedBy(t)
      *
@@ -128,13 +130,11 @@ public final class Failure extends RuntimeException {
 
     /**
      * Create instance using specified cause.
-     *
-     * <p>If specified {@link Throwable} is instance of {@link Failure}
-     * already - than it will be casted safely, otherwise - new will be
-     * created using {@link Throwable#getCause()} and default message.
-     *
-     * <p>If specified is {@code null} - new instance will be constructed
-     * with default code and message.
+     * <p>
+     * If specified {@link Throwable} is instance of {@link Failure} already - than it will be casted safely,
+     * otherwise - new will be created using {@link Throwable#getCause()} and default message.
+     * <p>
+     * If specified is {@code null} - new instance will be constructed with default code and message.
      *
      * @param cause failure cause
      * @return failure instance

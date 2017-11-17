@@ -6,14 +6,10 @@ import com.google.inject.Singleton;
 
 public class AuthorModule extends AbstractModule {
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public AuthorRepository authorRepository() {
         return new InMemoryAuthorRepository();
     }
 
-    @Override
-    protected void configure() {
-        // NOP
-    }
+    @Override protected void configure() {/* NOP*/}
 }
