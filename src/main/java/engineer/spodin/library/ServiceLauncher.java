@@ -1,11 +1,11 @@
 package engineer.spodin.library;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.name.Names;
 import engineer.spodin.library.author.AuthorModule;
 import engineer.spodin.library.book.BookModule;
 import engineer.spodin.library.graphql.GraphQLModule;
 import engineer.spodin.library.http.HttpServer;
+import engineer.spodin.library.util.VertxConfig;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
@@ -61,7 +61,7 @@ public class ServiceLauncher extends AbstractVerticle {
 
             // bind Vert.x configuration
             bind(JsonObject.class)
-                    .annotatedWith(Names.named("config"))
+                    .annotatedWith(VertxConfig.class)
                     .toInstance(Vertx.currentContext().config());
         }
     }
