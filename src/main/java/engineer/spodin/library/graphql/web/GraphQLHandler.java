@@ -45,7 +45,7 @@ public class GraphQLHandler implements RouterAwareHandler {
      * @param ctx routing context
      */
     private void getSchema(final RoutingContext ctx) {
-        ExecutionResult result = graphQL.execute(Queries.FULL_INTROSPECTION, new Object(), emptyMap());
+        ExecutionResult result = graphQL.execute(Queries.FULL_INTROSPECTION);
         ctx.response()
            .setStatusCode(OK.code())
            .putHeader(CONTENT_TYPE, APPLICATION_JSON_UTF8)
