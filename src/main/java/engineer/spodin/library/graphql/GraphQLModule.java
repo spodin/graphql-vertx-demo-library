@@ -40,6 +40,11 @@ public class GraphQLModule extends AbstractModule {
     }
 
     @Provides @Singleton
+    public GraphQL graphQL(GraphQLSchema schema) {
+        return GraphQL.newGraphQL(schema).build();
+    }
+
+    @Provides @Singleton
     GraphQLSchema graphQLSchema(Set<GraphQLResolver<?>> resolvers) {
         return SchemaParser
                 .newParser()
@@ -47,10 +52,5 @@ public class GraphQLModule extends AbstractModule {
                 .resolvers(new ArrayList<>(resolvers))
                 .build()
                 .makeExecutableSchema();
-    }
-
-    @Provides @Singleton
-    public GraphQL graphQL(GraphQLSchema schema) {
-        return GraphQL.newGraphQL(schema).build();
     }
 }
