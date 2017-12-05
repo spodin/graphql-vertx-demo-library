@@ -4,7 +4,7 @@ Some experiments with wiring up [Vert.x](http://vertx.io), [Guice](https://githu
 
 ## Build and Run
 
-1. Execute: `./gradlew runShadow`
+1. Execute: `./gradlew vertxRun`
 2. Point your browser to: [`http://localhost:8080/graphql`](http://localhost:8080/graphql)
 
 ## Discovering the GraphQL API
