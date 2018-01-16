@@ -1,5 +1,5 @@
 plugins {
-    id 'io.vertx.vertx-plugin' version '0.0.6'
+    id 'io.vertx.vertx-plugin' version '0.0.7'
 }
 
 ext {
