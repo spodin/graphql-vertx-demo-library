@@ -13,5 +13,6 @@
         </Root>
         <Logger name="io.netty" level="WARN"/>
         <Logger name="io.vertx" level="INFO"/>
+        <Logger name="graphql" level="INFO"/>
     </Loggers>
 </Configuration>
