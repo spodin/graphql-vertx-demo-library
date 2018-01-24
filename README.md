@@ -28,3 +28,8 @@ Currently, only one query per call is supported due to [limitations of GraphQL J
 
 Execute your [introspection](http://graphql.org/learn/introspection) query (as described above), 
 or get full schema declaration via `GET` request to `/graphql`.
+
+## Developer Tools
+
+- [GraphiQL](https://github.com/graphql/graphiql) (self-hosted, [demo](http://graphql.org/swapi-graphql/))
+- [Insomnia](https://insomnia.rest/) (standalone REST client)
