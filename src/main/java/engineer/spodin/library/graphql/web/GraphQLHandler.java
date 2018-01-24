@@ -3,6 +3,7 @@ package engineer.spodin.library.graphql.web;
 import engineer.spodin.library.graphql.util.Queries;
 import engineer.spodin.library.http.Failure;
 import engineer.spodin.library.http.RouterAwareHandler;
+import graphql.ExecutionInput;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
 import graphql.GraphQLException;
@@ -64,7 +65,14 @@ public class GraphQLHandler implements RouterAwareHandler {
         log.info("Parsed GraphQL query from payload: " + query);
 
         try {
-            ExecutionResult result = graphQL.execute(query.query(), new Object(), query.variables());
+            ExecutionInput input = ExecutionInput.newExecutionInput()
+                                                 .query(query.query())
+                                                 .context(new Object())
+                                                 .variables(query.variables())
+                                                 .build();
+
+            ExecutionResult result = graphQL.execute(input);
+
             ctx.response()
                .setStatusCode(OK.code())
                .putHeader(CONTENT_TYPE, APPLICATION_JSON_UTF8)
