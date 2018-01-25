@@ -3,3 +3,7 @@
 type Query {
     books: [Book!]
 }
+
+type Mutation {
+    changeBookName(id: Int!, name: String!): Boolean
+}
