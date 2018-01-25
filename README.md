@@ -17,7 +17,7 @@ Example:
 
 ```json
 {
-	"query":"{books{id,name,author{id,name}}}",
+	"query":"query{books{id,name,author{id,name}}}",
 	"variables":{}
 }
 ```
