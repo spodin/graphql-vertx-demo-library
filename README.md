@@ -33,6 +33,15 @@ Currently, only one query per call is supported due to [limitations of GraphQL J
 }
 ```
 
+same, but with variables:
+
+```json
+{
+	"query":"mutation($newBookName: String!){changeBookName(id: 1, name: $newBookName)}",
+	"variables":{"newBookName":"New Book Name"}
+}
+```
+
 ### Introspection
 
 Execute your [introspection](http://graphql.org/learn/introspection) query (as described above), 
