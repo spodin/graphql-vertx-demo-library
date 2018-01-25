@@ -30,8 +30,8 @@ public class GraphQLModule extends AbstractModule {
                 Multibinder.newSetBinder(binder(), new TypeLiteral<GraphQLResolver<?>>() { });
 
         resolversBinder.addBinding().to(BookResolver.class);
-        resolversBinder.addBinding().to(Query.class);
-        resolversBinder.addBinding().to(Mutation.class);
+        resolversBinder.addBinding().to(QueryResolver.class);
+        resolversBinder.addBinding().to(MutationResolver.class);
 
         // Bind handlers
         Multibinder<RouterAwareHandler> handlersBinder =
