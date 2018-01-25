@@ -1,5 +1,7 @@
 package engineer.spodin.library.book;
 
+import graphql.GraphQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,5 +19,16 @@ class InMemoryBookRepository implements BookRepository {
     @Override
     public List<Book> findAll() {
         return new ArrayList<>(books.values());
+    }
+
+    @Override
+    public void updateName(Long id, String name) {
+        Book book = books.get(id);
+        if (book == null) {
+            // TODO(spodin): Maybe there is a better way for errors propagation?
+            throw new GraphQLException("Book with id=" + id + " not found");
+        } else {
+            book.setName(name);
+        }
     }
 }
