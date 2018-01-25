@@ -37,8 +37,8 @@ same, but with variables:
 
 ```json
 {
-	"query":"mutation($newBookName: String!){changeBookName(id: 1, name: $newBookName)}",
-	"variables":{"newBookName":"New Book Name"}
+	"query":"mutation($bookId: Int!, $newBookName: String!){changeBookName(id: $bookId, name: $newBookName)}",
+	"variables":{"bookId":1, "newBookName":"New Book Name"}
 }
 ```
 
