@@ -24,6 +24,15 @@ Example:
 
 Currently, only one query per call is supported due to [limitations of GraphQL Java implementation](https://github.com/graphql-java/graphql-java/issues/431).
 
+### Mutations
+
+```json
+{
+	"query":"mutation{changeBookName(id: 1, name: \"New Book Name\")}",
+	"variables":{}
+}
+```
+
 ### Introspection
 
 Execute your [introspection](http://graphql.org/learn/introspection) query (as described above), 
