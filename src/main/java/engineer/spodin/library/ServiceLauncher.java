@@ -14,6 +14,9 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 
+/**
+ * Entry point for service startup.
+ */
 public class ServiceLauncher extends AbstractVerticle {
     private static final Logger log = LoggerFactory.getLogger(ServiceLauncher.class);
 

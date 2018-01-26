@@ -7,6 +7,9 @@ import engineer.spodin.library.book.BookRepository;
 import javax.inject.Inject;
 import java.util.List;
 
+/**
+ * GraphQL queries resolver.
+ */
 public class QueryResolver implements GraphQLQueryResolver {
     private final BookRepository books;
 
@@ -15,6 +18,11 @@ public class QueryResolver implements GraphQLQueryResolver {
         this.books = books;
     }
 
+    /**
+     * Returns books list.
+     *
+     * @return books list
+     */
     public List<Book> books() {
         return books.findAll();
     }
