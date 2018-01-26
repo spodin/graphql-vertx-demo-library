@@ -17,12 +17,30 @@ Example:
 
 ```json
 {
-	"query":"{books{id,name,author{id,name}}}",
+	"query":"query{books{id,name,author{id,name}}}",
 	"variables":{}
 }
 ```
 
 Currently, only one query per call is supported due to [limitations of GraphQL Java implementation](https://github.com/graphql-java/graphql-java/issues/431).
+
+### Mutations
+
+```json
+{
+	"query":"mutation{changeBookName(id: 1, name: \"New Book Name\")}",
+	"variables":{}
+}
+```
+
+same, but with variables:
+
+```json
+{
+	"query":"mutation($bookId: Int!, $newBookName: String!){changeBookName(id: $bookId, name: $newBookName)}",
+	"variables":{"bookId":1, "newBookName":"New Book Name"}
+}
+```
 
 ### Introspection
 

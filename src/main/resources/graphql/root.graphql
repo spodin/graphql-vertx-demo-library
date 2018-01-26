@@ -1,5 +1,21 @@
 # Root types
 
 type Query {
+
+    # Fetch books and authors
     books: [Book!]
+}
+
+type Mutation {
+
+    # Change book name by specified identifier
+    changeBookName(
+
+        # Book identifier
+        id: Int!,
+
+        # New book name
+        name: String!
+
+    ): Boolean
 }
