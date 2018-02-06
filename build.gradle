@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-    log4j2Version = '2.8.2'
+    log4j2Version = '2.10.0'
 }
 
 group 'engineer.spodin'
@@ -28,12 +28,12 @@ dependencies {
 }
 
 vertx {
-    vertxVersion = '3.4.2'
+    vertxVersion = '3.5.0'
     mainVerticle = 'engineer.spodin.library.ServiceLauncher'
     config = 'src/main/resources/conf.json'
     jvmArgs = ['-Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.Log4j2LogDelegateFactory']
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
+    gradleVersion = '4.5'
 }
