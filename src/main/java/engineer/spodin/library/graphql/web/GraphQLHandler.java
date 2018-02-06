@@ -59,10 +59,10 @@ public class GraphQLHandler implements RouterAwareHandler {
      */
     private void handleQuery(final RoutingContext ctx) {
         final JsonObject payload = ctx.getBodyAsJson();
-        log.info("Request raw payload: " + payload);
+        log.debug("Request raw payload: " + payload);
 
         final Request query = Request.fromJson(payload);
-        log.info("Parsed GraphQL query from payload: " + query);
+        log.debug("Parsed GraphQL query from payload: " + query);
 
         try {
             ExecutionInput input = ExecutionInput.newExecutionInput()
