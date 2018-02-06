@@ -11,9 +11,9 @@ class InMemoryBookRepository implements BookRepository {
     private final Map<Long, Book> books = new ConcurrentHashMap<>();
 
     InMemoryBookRepository() {
-        books.put(1L, new Book(1L, "Book Name 1", 1L));
-        books.put(2L, new Book(2L, "Book Name 2", 2L));
-        books.put(3L, new Book(3L, "Book Name 3", 3L));
+        books.put(1L, new Book(1L, "Code Complete", 1L));
+        books.put(2L, new Book(2L, "Thinking in Java", 2L));
+        books.put(3L, new Book(3L, "Java Concurrency in Practice", 3L));
     }
 
     @Override
