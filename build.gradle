@@ -38,6 +38,10 @@ vertx {
     jvmArgs = ['-Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.Log4j2LogDelegateFactory']
 }
 
+processResources {
+    exclude 'conf.json'
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '4.5'
 }
