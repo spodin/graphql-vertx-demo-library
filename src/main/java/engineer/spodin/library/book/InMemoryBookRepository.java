@@ -23,12 +23,11 @@ class InMemoryBookRepository implements BookRepository {
 
     @Override
     public void updateName(Long id, String name) {
-        Book book = books.get(id);
-        if (book == null) {
+        if (books.containsKey(id)) {
+            books.get(id).setName(name);
+        } else {
             // TODO(spodin): Maybe there is a better way for errors propagation?
             throw new GraphQLException("Book with id=" + id + " not found");
-        } else {
-            book.setName(name);
         }
     }
 }
