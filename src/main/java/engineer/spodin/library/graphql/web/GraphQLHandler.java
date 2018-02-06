@@ -35,25 +35,12 @@ public class GraphQLHandler implements RouterAwareHandler {
 
     @Override
     public void registerOn(Router router) {
-        router.get("/graphql").blockingHandler(this::getSchema);
         router.post("/graphql").blockingHandler(this::handleQuery);
+        router.get("/graphql").blockingHandler(this::getSchema);
     }
 
     /**
-     * Handles requests for full GraphQL schema declaration.
-     *
-     * @param ctx routing context
-     */
-    private void getSchema(final RoutingContext ctx) {
-        ExecutionResult result = graphQL.execute(Queries.FULL_INTROSPECTION);
-        ctx.response()
-           .setStatusCode(OK.code())
-           .putHeader(CONTENT_TYPE, APPLICATION_JSON_UTF8)
-           .end(Json.encode(new Response(result.getData(), result.getErrors())));
-    }
-
-    /**
-     * Handles GraphQL Query requests.
+     * Handles GraphQL query/mutation requests.
      *
      * @param ctx routing context
      */
@@ -81,6 +68,19 @@ public class GraphQLHandler implements RouterAwareHandler {
         } catch (GraphQLException e) {
             ctx.fail(Failure.BAD_REQUEST.causedBy(e));
         }
+    }
+
+    /**
+     * Handles requests for full GraphQL schema declaration.
+     *
+     * @param ctx routing context
+     */
+    private void getSchema(final RoutingContext ctx) {
+        ExecutionResult result = graphQL.execute(Queries.FULL_INTROSPECTION);
+        ctx.response()
+           .setStatusCode(OK.code())
+           .putHeader(CONTENT_TYPE, APPLICATION_JSON_UTF8)
+           .end(Json.encode(new Response(result.getData(), result.getErrors())));
     }
 
     @Override
